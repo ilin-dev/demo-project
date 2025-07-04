@@ -2,13 +2,11 @@ pipeline {
     agent { label 'Linux_build' }
 
     stages {
-        stage('Build') {
+        stage('Timeout') {
             steps {
-                sh 'echo "My first pipeline"'
-                sh '''
-                    echo "By the way, I can do more stuff in here"
-                    ls -lah
-                '''
+                retry(10) {
+                    sh 'I am not going to work :c'
+                }
             }
         }
     }
