@@ -2,10 +2,14 @@ pipeline {
     agent { label 'Linux_build' }
 
     stages {
-        stage('Timeout') {
+        stage('Deploy') {
             steps {
-                retry(10) {
-                    sh 'I am not going to work :c'
+                retry(3) {
+                    sh 'echo hello'
+                }
+
+                timeout(time: 3, unit: 'SECONDS') {
+                    sh 'sleep 5'
                 }
             }
         }
