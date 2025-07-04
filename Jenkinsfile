@@ -2,14 +2,29 @@ pipeline {
     agent { label 'Linux_build' }
 
     stages {
-        stage('Deploy') {
-            steps {
-                retry(3) {
-                    sh 'echo hello'
-                }
+        stage ('Compile Stage') {
 
-                timeout(time: 3, unit: 'SECONDS') {
-                    sh 'sleep 5'
+            steps {
+                withMaven(maven : 'maven') {
+                    sh 'mvn clean compile'
+                }
+            }
+        }
+
+        stage ('Testing Stage') {
+
+            steps {
+                withMaven(maven : 'maven') {
+                    sh 'mvn test'
+                }
+            }
+        }
+
+
+        stage ('Deployment Stage') {
+            steps {
+                withMaven(maven : 'maven') {
+                    sh 'mvn deploy'
                 }
             }
         }
