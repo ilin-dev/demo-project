@@ -74,7 +74,7 @@
       </plugins>
     </pluginManagement>
   </build>
-  <distributionManagement>
+<!--   <distributionManagement>
     <repository>
         <id>central</id>
         <name>artifactory-releases</name>
@@ -85,5 +85,5 @@
         <name>artifactory-snapshots</name>
         <url>http://ec2-52-37-222-191.us-west-2.compute.amazonaws.com:8081/artifactory/demo-project</url>
     </snapshotRepository>
-</distributionManagement>
+</distributionManagement> -->
 </project>
